@@ -1,0 +1,217 @@
+# Time & Space Complexity
+
+## 1. What is Time Complexity?
+
+Time complexity describes how the running time of an algorithm grows as the input size increases.
+
+It does not mean the exact time in seconds.
+
+We usually represent it using Big-O notation.
+
+---
+
+## 2. What is Space Complexity?
+
+Space complexity describes how much extra memory an algorithm needs as the input size increases.
+
+It includes memory used by variables, data structures, recursion, etc.
+
+---
+
+## 3. Big-O Notation
+
+Big-O describes the growth rate of an algorithm.
+
+Common complexities:
+
+- O(1) - Constant
+- O(log n) - Logarithmic
+- O(n) - Linear
+- O(n log n) - Linearithmic
+- O(n²) - Quadratic
+- O(n³) - Cubic
+- O(2ⁿ) - Exponential
+
+---
+
+## 4. O(1) - Constant Time
+
+The operation takes approximately the same amount of work regardless of input size.
+
+Example:
+
+```cpp
+int x = arr[0];
+
+```
+
+## 5. O(n) - Linear Time
+
+The amount of work grows directly with the input size.
+
+Example:
+
+for(int i = 0; i < n; i++)
+{
+    cout << arr[i];
+}
+
+Time Complexity: O(n)
+
+```
+
+## 6. O(n²) - Quadratic Time
+
+A loop inside another loop usually results in O(n²).
+
+Example:
+
+for(int i = 0; i < n; i++)
+{
+    for(int j = 0; j < n; j++)
+    {
+        cout << i << " " << j;
+    }
+}
+
+Time Complexity: O(n²)
+
+```
+
+## 7. O(n³) - Cubic Time
+
+Three nested loops usually result in O(n³).
+
+Example:
+
+for(int i = 0; i < n; i++)
+{
+    for(int j = 0; j < n; j++)
+    {
+        for(int k = 0; k < n; k++)
+        {
+            cout << i << " " << j << " " << k;
+        }
+    }
+}
+
+Time Complexity: O(n³)
+
+```
+
+## 8. O(n log n)
+
+This commonly appears in efficient sorting algorithms such as Merge Sort.
+
+It grows faster than O(n) but much slower than O(n²).
+
+```
+
+## 9. Sequential Operations
+
+When two blocks of code run one after another, their complexities are added.
+
+Example:
+
+for(int i = 0; i < n; i++)
+{
+    cout << i;
+}
+
+for(int i = 0; i < n; i++)
+{
+    cout << i;
+}
+
+O(n) + O(n) = O(2n)
+
+We ignore constants in Big-O:
+
+O(2n) = O(n)
+
+```
+
+## 10. If-Else and Complexity
+
+For conditions, we consider the work performed by the relevant branch.
+
+Example:
+
+if(x > 0)
+{
+    // O(n)
+}
+else
+{
+    // O(n²)
+}
+
+The worst-case complexity is:
+
+O(n²)
+
+```
+
+## 11. Important Big-O Rule
+
+When simplifying Big-O:
+
+Ignore constants.
+Keep the fastest-growing term.
+
+Example:
+
+O(n² + n + 5)
+
+becomes:
+
+O(n²)
+
+```
+
+## 12. Why Big-O Matters
+
+Big-O helps us compare algorithms and understand how they behave when the input becomes large.
+
+It is especially important for:
+
+Data Structures
+Algorithms
+Problem Solving
+Coding Interviews
+Competitive Programming
+
+```
+My Progress
+
+Completed:
+
+Time Complexity
+Space Complexity
+Big-O notation
+Common Big-O complexities
+Nested loops
+Sequential blocks
+If-else complexity
+Best-case and worst-case concepts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
