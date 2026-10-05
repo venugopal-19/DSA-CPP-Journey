@@ -953,39 +953,3 @@ Move Zeros	O(n)
 Remove Duplicates from Sorted Array	O(n)
 Insert in middle of array	O(n)
 Delete from middle of array	O(n)
-My Array Learning Progress
-
-I have learned the basic concepts and operations of arrays and vectors.
-
-I now understand:
-
-What an array is
-Types of arrays
-Array indexing
-Accessing elements
-Calculating the address of a 1D array element
-Traversing an array
-Linear search
-Updating elements
-Inserting elements
-Finding maximum and minimum
-Reversing an array
-Checking for a palindrome
-Moving zeros to the end
-Removing duplicates from a sorted array
-What a vector is
-push_back()
-pop_back()
-size()
-insert()
-erase()
-empty()
-clear()
-
-The main thing I am trying to understand is not just how to write these programs, but why each approach works and what its time and space complexity is.
-
-Next Step
-
-After completing these basic array concepts and problems, I will continue with more array problems and then move to the next DSA topic.
-
-Learn → Understand → Code → Practice → Improve.
