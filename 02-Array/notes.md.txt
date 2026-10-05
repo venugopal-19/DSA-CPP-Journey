@@ -1,0 +1,991 @@
+# Arrays
+
+Arrays are one of the first and most important data structures I am learning in DSA.
+
+In this section, I am learning how arrays store data, how to access and modify elements, how to perform different operations, and how to solve basic array problems using C++.
+
+---
+
+# 1. What is an Array?
+
+An array is a collection of elements of the same data type stored in a continuous block of memory.
+
+For example:
+
+```cpp
+int arr[5] = {10, 20, 30, 40, 50};
+
+Here:
+
+arr is the name of the array.
+5 is the size of the array.
+The array contains 5 integer elements.
+Each element is accessed using an index.
+
+The elements are stored like this:
+
+10   20   30   40   50
+
+Their indexes are:
+
+Index:    0    1    2    3    4
+Value:   10   20   30   40   50
+
+Array indexing starts from 0.
+
+Therefore, if an array has n elements:
+
+First index = 0
+Last index  = n - 1
+
+For an array of size 5:
+
+Last index = 5 - 1 = 4
+
+---
+
+# 2. Types of Arrays
+
+Arrays can be classified based on their dimensions.
+
+1D Array
+
+A one-dimensional array stores elements in a single sequence.
+
+Example:
+
+int arr[5] = {10, 20, 30, 40, 50};
+
+It can be visualized as:
+
+10  20  30  40  50
+2D Array
+
+A two-dimensional array stores data in rows and columns.
+
+Example:
+
+int arr[2][3] =
+{
+    {10, 20, 30},
+    {40, 50, 60}
+};
+
+It can be visualized as:
+
+10  20  30
+40  50  60
+
+A 2D array is commonly used for matrices and table-like data.
+
+Multidimensional Array
+
+An array can have more than two dimensions.
+
+Example:
+
+int arr[2][3][4];
+
+These are called multidimensional arrays.
+
+For my current DSA learning, I am mainly focusing on one-dimensional arrays.
+
+---
+
+# 3. Declaring an Array
+
+The general syntax for declaring an array is:
+
+data_type array_name[size];
+
+Example:
+
+int arr[5];
+
+This creates an integer array that can store 5 elements.
+
+We can also initialize an array at the time of declaration:
+
+int arr[5] = {10, 20, 30, 40, 50};
+
+The compiler can also determine the size from the number of elements:
+
+int arr[] = {10, 20, 30, 40, 50};
+
+---
+
+# 4. Accessing an Element
+
+An array element can be accessed using its index.
+
+Example:
+
+int arr[5] = {10, 20, 30, 40, 50};
+
+cout << arr[2];
+
+Output:
+
+30
+
+Because index 2 contains the value 30.
+
+We can also change an element using its index:
+
+arr[2] = 100;
+
+Now the array becomes:
+
+10  20  100  40  50
+
+---
+
+# 5. Calculating the Address of an Element in a 1D Array
+
+Array elements are stored in continuous memory locations.
+
+Because of this, we can calculate the address of any element using a simple formula.
+
+For a zero-based array:
+
+Address of A[i] = Base Address + (i × Size of each element)
+
+Or:
+
+LOC(A[i]) = Base Address + (i × W)
+
+Where:
+
+LOC(A[i]) = address of element at index i
+Base Address = address of the first element
+i = index of the element
+W = size of each element in bytes
+Example
+
+Suppose:
+
+Base Address = 1000
+Size of each integer = 4 bytes
+
+Find the address of A[3].
+
+Using:
+
+Address = Base Address + (Index × Element Size)
+Address = 1000 + (3 × 4)
+        = 1000 + 12
+        = 1012
+
+Therefore:
+
+Address of A[3] = 1012
+
+This is one of the reasons why accessing an array element by index is efficient.
+
+---
+
+# 6. Traversing an Array
+
+Traversing an array means visiting each element one by one.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+
+    for(int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+10 20 30 40 50
+
+The loop starts at index 0 and continues until index 4.
+
+Time Complexity:
+
+O(n)
+
+because every element may need to be visited.
+
+---
+
+# 7. Linear Search
+
+Linear search is a simple searching algorithm.
+
+It checks each element one by one until the required element is found.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[5] = {10, 20, 30, 40, 50};
+    int target = 30;
+
+    for(int i = 0; i < 5; i++)
+    {
+        if(arr[i] == target)
+        {
+            cout << "Element found at index " << i;
+            return 0;
+        }
+    }
+
+    cout << "Element not found";
+
+    return 0;
+}
+
+Output:
+
+Element found at index 2
+Time Complexity
+
+Best case:
+
+O(1)
+
+If the target is found at the first position.
+
+Worst case:
+
+O(n)
+
+If the target is at the last position or does not exist in the array.
+
+---
+
+# 8. Updating an Element
+
+Updating means changing the value of an existing element.
+
+Example:
+
+int arr[5] = {10, 20, 30, 40, 50};
+
+arr[2] = 100;
+
+Before:
+
+10 20 30 40 50
+
+After:
+
+10 20 100 40 50
+
+Since we directly access the element using its index, updating an element takes:
+
+O(1)
+
+---
+
+# 9. Inserting an Element into an Array
+
+Insertion means adding a new element to an array.
+
+In a normal fixed-size array, insertion can require shifting existing elements to make space.
+
+For example:
+
+Original:
+10 20 30 40
+
+Insert 25 at index 2:
+
+10 20 25 30 40
+
+The elements 30 and 40 have to be shifted.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[10] = {10, 20, 30, 40};
+    int n = 4;
+    int position = 2;
+    int value = 25;
+
+    for(int i = n; i > position; i--)
+    {
+        arr[i] = arr[i - 1];
+    }
+
+    arr[position] = value;
+    n++;
+
+    for(int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+10 20 25 30 40
+
+Insertion can take:
+
+O(n)
+
+because elements may need to be shifted.
+
+---
+
+# 10. Vector in C++
+
+A vector is a dynamic array provided by the C++ Standard Library.
+
+Unlike a normal fixed-size array, a vector can automatically grow and shrink when elements are added or removed.
+
+We need to include:
+
+#include <vector>
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {10, 20, 30, 40, 50};
+
+    for(int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+10 20 30 40 50
+
+---
+
+# 11. Adding an Element Using push_back()
+
+push_back() adds an element to the end of a vector.
+
+Example:
+
+vector<int> arr = {10, 20, 30};
+
+arr.push_back(40);
+
+Now:
+
+10 20 30 40
+
+Another example:
+
+arr.push_back(50);
+
+Now:
+
+10 20 30 40 50
+
+---
+
+# 12. Removing an Element Using pop_back()
+
+pop_back() removes the last element of a vector.
+
+Example:
+
+vector<int> arr = {10, 20, 30, 40};
+
+arr.pop_back();
+
+Now:
+
+10 20 30
+
+It always removes the last element.
+
+---
+
+# 13. Finding the Size Using size()
+
+The size() function tells us how many elements are currently present in a vector.
+
+Example:
+
+vector<int> arr = {10, 20, 30, 40, 50};
+
+cout << arr.size();
+
+Output:
+
+5
+
+This is especially useful when traversing a vector:
+
+for(int i = 0; i < arr.size(); i++)
+{
+    cout << arr[i] << " ";
+}
+
+---
+
+# 14. Inserting at a Specific Position Using insert()
+
+The insert() function can be used to insert an element at a specific position in a vector.
+
+Example:
+
+vector<int> arr = {10, 20, 30, 40};
+
+arr.insert(arr.begin() + 2, 25);
+
+Now:
+
+10 20 25 30 40
+
+Here:
+
+arr.begin() + 2
+
+points to index 2.
+
+---
+
+# 15. Removing an Element Using erase()
+
+The erase() function removes an element from a specific position.
+
+Example:
+
+vector<int> arr = {10, 20, 30, 40, 50};
+
+arr.erase(arr.begin() + 2);
+
+The element at index 2, which is 30, is removed.
+
+Now:
+
+10 20 40 50
+
+---
+
+# 16. Checking Whether a Vector is Empty
+
+The empty() function checks whether a vector contains any elements.
+
+It returns:
+
+true
+
+if the vector is empty.
+
+It returns:
+
+false
+
+if the vector contains elements.
+
+Example:
+
+vector<int> arr;
+
+if(arr.empty())
+{
+    cout << "Vector is empty";
+}
+
+Output:
+
+Vector is empty
+
+---
+
+# 17. Removing All Elements Using clear()
+
+The clear() function removes all elements from a vector.
+
+Example:
+
+vector<int> arr = {10, 20, 30, 40};
+
+arr.clear();
+
+Now the vector contains no elements.
+
+We can check it using:
+
+cout << arr.size();
+
+Output:
+
+0
+
+---
+
+# 18. Finding the Maximum Element
+
+We can find the maximum element using a loop.
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {10, 40, 20, 50, 30};
+
+    int maximum = arr[0];
+
+    for(int i = 1; i < arr.size(); i++)
+    {
+        if(arr[i] > maximum)
+        {
+            maximum = arr[i];
+        }
+    }
+
+    cout << "Maximum = " << maximum;
+
+    return 0;
+}
+
+Output:
+
+Maximum = 50
+
+Time Complexity:
+
+O(n)
+
+because we may need to check every element.
+
+---
+
+# 19. Finding the Minimum Element
+
+We can find the minimum element in a similar way.
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {10, 40, 20, 50, 30};
+
+    int minimum = arr[0];
+
+    for(int i = 1; i < arr.size(); i++)
+    {
+        if(arr[i] < minimum)
+        {
+            minimum = arr[i];
+        }
+    }
+
+    cout << "Minimum = " << minimum;
+
+    return 0;
+}
+
+Output:
+
+Minimum = 10
+
+Time Complexity:
+
+O(n)
+
+---
+
+# 20. Reversing an Array
+
+Reversing an array means changing the order of its elements.
+
+Example:
+
+Before:
+10 20 30 40 50
+
+After:
+50 40 30 20 10
+
+One way to reverse an array manually is by using two pointers.
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {10, 20, 30, 40, 50};
+
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while(left < right)
+    {
+        swap(arr[left], arr[right]);
+
+        left++;
+        right--;
+    }
+
+    for(int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+50 40 30 20 10
+
+The two pointers move towards the center.
+
+Time Complexity:
+
+O(n)
+
+---
+
+# 21. Checking Whether an Array is a Palindrome
+
+A palindrome is something that remains the same when read from the beginning or from the end.
+
+For example:
+
+1 2 3 2 1
+
+is a palindrome.
+
+But:
+
+1 2 3 4 5
+
+is not a palindrome.
+
+We can use two pointers to check this.
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {1, 2, 3, 2, 1};
+
+    int left = 0;
+    int right = arr.size() - 1;
+
+    bool palindrome = true;
+
+    while(left < right)
+    {
+        if(arr[left] != arr[right])
+        {
+            palindrome = false;
+            break;
+        }
+
+        left++;
+        right--;
+    }
+
+    if(palindrome)
+    {
+        cout << "Array is a palindrome";
+    }
+    else
+    {
+        cout << "Array is not a palindrome";
+    }
+
+    return 0;
+}
+
+Output:
+
+Array is a palindrome
+
+Time Complexity:
+
+O(n)
+
+Space Complexity:
+
+O(1)
+
+because we are not using another array.
+
+---
+
+# 22. Move All Zeros to the End
+
+The problem is to move all zero elements to the end while keeping the relative order of the non-zero elements.
+
+Example:
+
+Before:
+0 1 0 3 12
+
+After:
+1 3 12 0 0
+
+One approach is to keep track of the position where the next non-zero element should go.
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {0, 1, 0, 3, 12};
+
+    int position = 0;
+
+    for(int i = 0; i < arr.size(); i++)
+    {
+        if(arr[i] != 0)
+        {
+            arr[position] = arr[i];
+            position++;
+        }
+    }
+
+    while(position < arr.size())
+    {
+        arr[position] = 0;
+        position++;
+    }
+
+    for(int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+1 3 12 0 0
+
+Time Complexity:
+
+O(n)
+
+Space Complexity:
+
+O(1)
+
+---
+
+# 23. Removing Duplicates from a Sorted Array
+
+When an array is sorted, duplicate elements appear next to each other.
+
+Example:
+
+1 1 2 2 3 3 4
+
+We can remove the duplicates in-place using a two-pointer approach.
+
+The result becomes:
+
+1 2 3 4
+
+Example:
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {1, 1, 2, 2, 3, 3, 4};
+
+    int unique = 0;
+
+    for(int i = 1; i < arr.size(); i++)
+    {
+        if(arr[i] != arr[unique])
+        {
+            unique++;
+            arr[unique] = arr[i];
+        }
+    }
+
+    int newSize = unique + 1;
+
+    cout << "Array after removing duplicates: ";
+
+    for(int i = 0; i < newSize; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+
+Output:
+
+Array after removing duplicates: 1 2 3 4
+Important
+
+This approach works because the array is sorted.
+
+For example:
+
+1 1 2 2 3 3 4
+
+duplicates are next to each other.
+
+If the array is not sorted, this particular approach cannot simply be used to remove all duplicates.
+
+Time Complexity:
+
+O(n)
+
+Space Complexity:
+
+O(1)
+
+---
+
+# 24. Important Vector Functions Learned
+
+Here are the main vector functions I have learned so far:
+
+Function	Purpose
+push_back()	Adds an element to the end
+pop_back()	Removes the last element
+size()	Returns the number of elements
+insert()	Inserts an element at a position
+erase()	Removes an element or range
+empty()	Checks whether the vector is empty
+clear()	Removes all elements
+
+Example:
+
+vector<int> arr = {10, 20, 30};
+
+arr.push_back(40);       // 10 20 30 40
+
+arr.pop_back();          // 10 20 30
+
+cout << arr.size();      // 3
+
+arr.insert(arr.begin() + 1, 15);
+// 10 15 20 30
+
+arr.erase(arr.begin() + 1);
+// 10 20 30
+
+cout << arr.empty();     // 0 (false)
+
+arr.clear();
+// vector becomes empty
+
+---
+
+# 25. Array Problems I Have Practiced
+
+So far, I have practiced problems such as:
+
+Traversing an array
+Linear search
+Updating an element
+Inserting an element
+Finding maximum
+Finding minimum
+Reversing an array
+Checking whether an array is a palindrome
+Moving all zeros to the end
+Removing duplicates from a sorted array
+
+These problems helped me understand how array concepts are used in actual problem solving.
+
+---
+
+# 26. Time Complexity Summary
+Operation	Typical Time Complexity
+Access by index	O(1)
+Update by index	O(1)
+Traversal	O(n)
+Linear Search	O(n)
+Find Maximum	O(n)
+Find Minimum	O(n)
+Reverse	O(n)
+Palindrome Check	O(n)
+Move Zeros	O(n)
+Remove Duplicates from Sorted Array	O(n)
+Insert in middle of array	O(n)
+Delete from middle of array	O(n)
+My Array Learning Progress
+
+I have learned the basic concepts and operations of arrays and vectors.
+
+I now understand:
+
+What an array is
+Types of arrays
+Array indexing
+Accessing elements
+Calculating the address of a 1D array element
+Traversing an array
+Linear search
+Updating elements
+Inserting elements
+Finding maximum and minimum
+Reversing an array
+Checking for a palindrome
+Moving zeros to the end
+Removing duplicates from a sorted array
+What a vector is
+push_back()
+pop_back()
+size()
+insert()
+erase()
+empty()
+clear()
+
+The main thing I am trying to understand is not just how to write these programs, but why each approach works and what its time and space complexity is.
+
+Next Step
+
+After completing these basic array concepts and problems, I will continue with more array problems and then move to the next DSA topic.
+
+Learn → Understand → Code → Practice → Improve.
